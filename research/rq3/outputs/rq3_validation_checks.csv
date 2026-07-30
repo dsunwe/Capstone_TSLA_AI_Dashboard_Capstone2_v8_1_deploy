@@ -1,0 +1,25 @@
+Check,Status,Evidence
+Frozen input and upstream RQ2 hashes match the RQ3 protocol,Pass,"{""data/TSLA_features_common_window.csv"": ""9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc"", ""upstream/rq2_feature_family_audit_predictions.csv"": ""7a7097e4c21592ef36e3c0871d9b5b05858a84503506032896eff7fd0010634a"", ""upstream/rq2_feature_family_oof_predictions.csv"": ""093449e9aa4020a929a797acdc8d20336f988faa0ee6081154791d94fe293262"", ""upstream/rq2_protocol.json"": ""e8ffafae7bc8f29a051dead4b709c9e93c030dc18c3f13104a66e069ce5785a5""}"
+Saved metadata identifies the executed protocol and script,Pass,protocol=56e35bed3f4980b06c142e2d928a73ab54ea20f84cf30d27d64dce8b9cd873fa; script=268df7f52848f7b1dda1722076a7ffbe8ba980dc66a86ea02d031d5ded34c677; input=9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc
+Protocol freezes the six RQ2 features and common 20-session input,Pass,"features=['Daily_Return', 'Momentum_5', 'EMA8_13_State', 'Volatility_20', 'Drawdown', 'Volume_Ratio']; shape=[20, 6]"
+Target independently recomputes from forward and trailing mean closes,Pass,origins=2458; mismatches=0
+Every model origin has one causal 20 by 6 sequence ending at t,Pass,"shape=(2458, 20, 6); last_step_match=True; date_match=True"
+Development and retrospective-audit populations retain all RQ2 origins,Pass,"development=2046, 2016-10-03..2024-11-18; audit=407, 2024-11-26..2026-07-15"
+Five outer folds independently reproduce with gap five,Pass,"[(1, 791, '2019-11-21', '2019-11-29', '2019-12-02', '2020-11-25', 250), (2, 1041, '2020-11-18', '2020-11-25', '2020-11-27', '2021-11-23', 250), (3, 1291, '2021-11-16', '2021-11-23', '2021-11-24', '2022-11-21', 250), (4, 1541, '2022-11-14', '2022-11-21', '2022-11-22', '2023-11-20', 250), (5, 1791, '2023-11-13', '2023-11-20', '2023-11-21', '2024-11-18', 250)]"
+All six training scopes use three common purged inner folds,Pass,rows=18; scopes=6; max_validation=2024-11-18
+Bounded inner tuning preserves every candidate and validation result,Pass,rows=270; scopes=6; models=4
+LSTM early stopping is confined to inner validation,Pass,best_epoch_range=1..99
+"Every model, bridge, and baseline uses identical OOF and audit origins",Pass,comparators=8; OOF=1250; audit=407
+"Prediction ledger is unique, finite, bounded, and threshold-consistent",Pass,duplicates=0; probability_range=0.000000000..1.000000000
+Fold and audit metrics independently recompute from predictions,Pass,No mismatches.
+Pooled performance summary independently recomputes,Pass,No mismatches.
+RQ2 current-day bridge exactly reproduces the frozen upstream predictions,Pass,OOF rows=1250; audit rows=407; exact_probability_tolerance=1e-12
+"RF, XGBoost, and LSTM probabilities equal the saved three-seed means",Pass,No mismatches.
+Development-only one-SE selection independently recomputes,Pass,best_mean_model=Compact LSTM; SE=0.011566543; cutoff=0.683831063; selected=Lagged Logistic Regression
+Every model has one development-only final audit configuration,Pass,"[{""Model"":""Lagged Logistic Regression"",""Selected Configuration"":""{\""C\"":5.0}"",""Selected Epoch"":null},{""Model"":""Random Forest"",""Selected Configuration"":""{\""max_depth\"":8,\""max_features\"":\""sqrt\"",\""min_samples_leaf\"":5,\""n_estimators\"":300}"",""Selected Epoch"":null},{""Model"":""XGBoost"",""Selected Configuration"":""{\""learning_rate\"":0.03,\""max_depth\"":3,\""min_child_weight\"":5,\""n_estimators\"":250}"",""Selected Epoch"":null},{""Model"":""Compact LSTM"",""Selected Configuration"":""{\""dropout\"":0.1,\""learning_rate\"":0.001,\""units\"":8}"",""Selected Epoch"":37.0}]"
+Five immutable phase-offset evaluations cover every saved prediction,Pass,rows=80; comparators=8
+All pre-specified paired block-bootstrap contrasts and point estimates exist,Pass,primary=12; secondary=32; point_mismatches=0
+Frozen selected predictions and manifest hashes match the reviewed ledger,Pass,selected=Lagged Logistic Regression; files=6; hashes_match=True
+Frozen RQ4 signal contains exactly the selected OOF and audit decisions,Pass,"rows=1657; periods={'Development OOF': 1250, 'Retrospective audit': 407}"
+Frozen selected estimator and preprocessing reproduce audit probabilities,Pass,selected=Lagged Logistic Regression; preprocessor_fit_end=2024-11-18; reproduced=True
+Reader-facing notebook executed top to bottom,Pass,"{""cells"": 14, ""code_cells_executed"": 7, ""code_cells_with_outputs"": 7, ""execution_backend"": ""in-process IPython shared namespace; local Jupyter kernel TCP startup is unavailable in this sandbox"", ""notebook"": ""notebooks/v8_3_rq3_model_comparison.ipynb"", ""status"": ""executed""}"

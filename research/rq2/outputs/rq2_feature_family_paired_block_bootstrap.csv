@@ -1,0 +1,7 @@
+Period,Group A,Group B,Rows,Point Difference,CI Lower 95%,CI Upper 95%,Share Difference <= 0,Share Difference >= 0,Two-sided Bootstrap p,Bootstrap Replicates,Block Length,Holm-adjusted p
+Development OOF,Technical — EMA-aware compact,Cross-market,1250,0.0464,0.0024,0.0904,0.0214,0.9804,0.04319136172765447,5000,20,0.04319136172765447
+Development OOF,Technical — EMA-aware compact,Macroeconomic,1250,0.1976,0.1272,0.2688,0.0,1.0,0.0003999200159968006,5000,20,0.0011997600479904018
+Development OOF,Technical — EMA-aware compact,Broad sentiment and risk proxies,1250,0.1416,0.0784,0.2056,0.0,1.0,0.0003999200159968006,5000,20,0.0011997600479904018
+Retrospective audit,Technical — EMA-aware compact,Cross-market,407,0.05896805896805897,0.0,0.12039312039312039,0.0258,0.9792,0.051989602079584085,5000,20,0.10397920415916817
+Retrospective audit,Technical — EMA-aware compact,Macroeconomic,407,0.1375921375921376,0.04176904176904177,0.2334152334152334,0.002,0.9986,0.004399120175964807,5000,20,0.013197360527894421
+Retrospective audit,Technical — EMA-aware compact,Broad sentiment and risk proxies,407,0.04914004914004914,-0.051597051597051594,0.14742014742014742,0.1712,0.8404,0.34273145370925817,5000,20,0.34273145370925817

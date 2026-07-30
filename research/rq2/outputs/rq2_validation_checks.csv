@@ -1,0 +1,23 @@
+Check,Status,Evidence
+Frozen input snapshot hash matches the protocol,Pass,9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc
+Monthly macro source hashes match the protocol,Pass,"{'CPIAUCSL': '5bf50056e886c05cbf4a1aa417c37144e20d6d500a3d80f86f83715bb96de831', 'UNRATE': 'e77d0cfd5bfe7efcd4df6a4aa4b19489dd1751e036232ea87ad234b8c3536fc0'}"
+Saved metadata identifies the same protocol and input,Pass,"protocol=TSLA-V8.2-RQ2-EMA-AWARE-RETROSPECTIVE; protocol_sha256=e8ffafae7bc8f29a051dead4b709c9e93c030dc18c3f13104a66e069ce5785a5; input_sha256=9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc; macro_sha256={'CPIAUCSL': '5bf50056e886c05cbf4a1aa417c37144e20d6d500a3d80f86f83715bb96de831', 'UNRATE': 'e77d0cfd5bfe7efcd4df6a4aa4b19489dd1751e036232ea87ad234b8c3536fc0'}"
+RQ2 primary technical family is the six-feature EMA-aware design,Pass,Daily_Return | Momentum_5 | EMA8_13_State | Volatility_20 | Drawdown | Volume_Ratio
+"EMA and SMA are persistent state variables, not raw price levels",Pass,"{""EMA8_13_State"": ""1[EMA8[t] > EMA13[t]]"", ""SMA10_20_State"": ""1[SMA10[t] > SMA20[t]]"", ""role"": ""persistent trend state, not a one-day crossover event""}"
+Saved state derivation matches the source moving averages row by row,Pass,"rows=2458; EMA states=[np.float64(0.0), np.float64(1.0)]; SMA states=[np.float64(0.0), np.float64(1.0)]"
+CPI and unemployment changes are computed at source frequency,Pass,"CPIAUCSL: matched=True, zero releases=0; UNRATE: matched=True, zero releases=34"
+RQ2 protocol keeps RQ3 and RQ4 outside this package,Pass,"{""rq1"": ""dashboard implementation remains frozen"", ""rq2"": ""feature-family comparison under common Logistic Regression"", ""rq3"": ""model-family comparison is out of scope for this package"", ""rq4"": ""economic backtesting is out of scope for this package"", ""firm_news_finbert_s1"": ""frozen and not loaded""}"
+"Focused RQ2 source contains no RF, XGBoost, or LSTM model",Pass,Only LogisticRegression is imported and instantiated.
+Four standalone families each have five walk-forward folds,Pass,"{'Broad sentiment and risk proxies': 5, 'Cross-market': 5, 'Macroeconomic': 5, 'Technical — EMA-aware compact': 5}"
+Four technical designs each have five walk-forward folds,Pass,"{'Core-5 without moving-average state': 5, 'Legacy SMA50-ratio comparator': 5, 'Primary EMA-aware compact': 5, 'SMA10/20-state sensitivity': 5}"
+Every development fold purges labels before its test period,Pass,All Train Target End dates precede Test Start dates.
+All families and technical designs use common OOF and audit dates,Pass,family OOF=1250; family audit=407; technical OOF=1250; technical audit=407
+Feature-family audit metrics recompute from the prediction ledger,Pass,No mismatches.
+Technical-design audit metrics recompute from the prediction ledger,Pass,No mismatches.
+All saved probabilities are finite and bounded,Pass,min=0.000151208; max=0.999914497
+Primary reviewed audit result is reproduced,Pass,rows=407; accuracy=0.638820638821; balanced=0.637686946421
+Primary technical family is bootstrapped against all three alternatives,Pass,"[('Development OOF', 'Broad sentiment and risk proxies'), ('Development OOF', 'Cross-market'), ('Development OOF', 'Macroeconomic'), ('Retrospective audit', 'Broad sentiment and risk proxies'), ('Retrospective audit', 'Cross-market'), ('Retrospective audit', 'Macroeconomic')]"
+EMA-aware design is bootstrapped against every technical comparator,Pass,"[('Development OOF', 'Core-5 without moving-average state'), ('Development OOF', 'Legacy SMA50-ratio comparator'), ('Development OOF', 'SMA10/20-state sensitivity'), ('Retrospective audit', 'Core-5 without moving-average state'), ('Retrospective audit', 'Legacy SMA50-ratio comparator'), ('Retrospective audit', 'SMA10/20-state sensitivity')]"
+Five phase-offset robustness samples exist for every design,Pass,"families={'Broad sentiment and risk proxies': 5, 'Cross-market': 5, 'Macroeconomic': 5, 'Technical — EMA-aware compact': 5}; technical={'Core-5 without moving-average state': 5, 'Legacy SMA50-ratio comparator': 5, 'Primary EMA-aware compact': 5, 'SMA10/20-state sensitivity': 5}"
+Every phase is refitted with five purged development folds,Pass,phase-fold rows=200; test sizes=[np.int64(50)]
+Phase predictions use the immutable eligible-row modulo-five anchor,Pass,Each design covers 407 dates; each phase contains 81 or 82 dates.

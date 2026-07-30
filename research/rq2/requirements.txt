@@ -1,0 +1,7 @@
+# Reviewed reconstruction stack. The original frozen run did not record its
+# software versions, so this lock supports repeatable recomputation but is not
+# presented as a bitwise guarantee for the original artefacts.
+numpy==2.5.1
+pandas==3.0.5
+scikit-learn==1.8.0
+matplotlib==3.10.8

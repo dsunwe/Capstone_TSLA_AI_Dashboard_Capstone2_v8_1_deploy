@@ -1,0 +1,4 @@
+# Backward-compatible local setup entry point.
+# Includes CSV upload, LR/RF/XGBoost/LSTM, backtesting, charts, tests,
+# calendar handling, and the complete Interactive Exploratory Sandbox.
+-r requirements-local.txt

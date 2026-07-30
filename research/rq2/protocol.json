@@ -1,0 +1,155 @@
+{
+  "protocol_id": "TSLA-V8.2-RQ2-EMA-AWARE-RETROSPECTIVE",
+  "protocol_date": "2026-07-29",
+  "status": "retrospective_rq2_revision_not_prospectively_confirmatory",
+  "research_question": "Under an identical regularised Logistic Regression framework, how does retrospective walk-forward classification performance differ across four pre-specified standalone feature families—EMA-aware technical, cross-market, macroeconomic, and broad sentiment/risk proxies—when predicting Tesla's five-session forward-versus-trailing mean-close direction?",
+  "primary_asset": "TSLA",
+  "input_snapshot": {
+    "file": "data/TSLA_features_common_window.csv",
+    "sha256": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+    "source": "Frozen v7.5 processed common-window dataset"
+  },
+  "macro_source_snapshots": {
+    "CPIAUCSL": {
+      "file": "data/CPIAUCSL.csv",
+      "sha256": "5bf50056e886c05cbf4a1aa417c37144e20d6d500a3d80f86f83715bb96de831",
+      "availability_rule": "15th day of the following month"
+    },
+    "UNRATE": {
+      "file": "data/UNRATE.csv",
+      "sha256": "e77d0cfd5bfe7efcd4df6a4aa4b19489dd1751e036232ea87ad234b8c3536fc0",
+      "availability_rule": "8th day of the following month"
+    },
+    "change_construction": "Compute release-to-release changes at monthly source frequency before backward as-of merging to TSLA trading dates; preserve true zero changes."
+  },
+  "target": {
+    "name": "Rolling five-trading-day mean-price trend",
+    "formula": "1[mean(Close[t+1:t+5]) > mean(Close[t-4:t])]",
+    "information_cutoff": "after Close[t]",
+    "horizon_trading_days": 5,
+    "interpretation_boundary": "classification target, not trading win rate or next-week endpoint return"
+  },
+  "development_and_audit": {
+    "development_label_end_before": "2024-11-26",
+    "retrospective_audit_start": "2024-11-26",
+    "walk_forward_folds": 5,
+    "test_rows_per_fold": 250,
+    "purge_rows": 5
+  },
+  "common_model": {
+    "name": "Regularised Logistic Regression",
+    "imputer": "training-fold median",
+    "scaler": "training-fold StandardScaler",
+    "C": 0.5,
+    "class_weight": "balanced",
+    "solver": "liblinear",
+    "probability_threshold": 0.5,
+    "random_state": 42
+  },
+  "standalone_feature_families": {
+    "Technical — EMA-aware compact": [
+      "Daily_Return",
+      "Momentum_5",
+      "EMA8_13_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "Cross-market": [
+      "SP500_Return",
+      "QQQ_Excess_Return",
+      "QQQ_Momentum_5",
+      "QQQ_Volatility_20",
+      "QQQ_Volatility_Change_5"
+    ],
+    "Macroeconomic": [
+      "Treasury_10Y_Change_5",
+      "Yield_Curve_10Y2Y",
+      "Yield_Curve_Change_5",
+      "Fed_Funds_Change_20",
+      "Latest_CPI_YoY_Release_Change",
+      "Latest_Unemployment_Release_Change"
+    ],
+    "Broad sentiment and risk proxies": [
+      "VIX_Level",
+      "VIX_Change_5",
+      "Consumer_Sentiment",
+      "Consumer_Sentiment_Release_Change"
+    ]
+  },
+  "technical_designs": {
+    "Primary EMA-aware compact": [
+      "Daily_Return",
+      "Momentum_5",
+      "EMA8_13_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "Core-5 without moving-average state": [
+      "Daily_Return",
+      "Momentum_5",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "SMA10/20-state sensitivity": [
+      "Daily_Return",
+      "Momentum_5",
+      "SMA10_20_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "Legacy SMA50-ratio comparator": [
+      "Daily_Return",
+      "Momentum_5",
+      "SMA50_Ratio",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ]
+  },
+  "moving_average_state_definitions": {
+    "EMA8_13_State": "1[EMA8[t] > EMA13[t]]",
+    "SMA10_20_State": "1[SMA10[t] > SMA20[t]]",
+    "role": "persistent trend state, not a one-day crossover event"
+  },
+  "metrics": [
+    "Accuracy",
+    "Balanced Accuracy",
+    "Macro F1",
+    "MCC",
+    "class recall",
+    "ROC-AUC"
+  ],
+  "uncertainty": {
+    "method": "paired circular moving-block bootstrap",
+    "replicates": 5000,
+    "block_length_trading_days": 20,
+    "family_comparison_multiplicity": "Holm adjustment across the three Technical-versus-alternative contrasts, separately for development OOF and retrospective audit"
+  },
+  "overlap_robustness": {
+    "method": "five phase-specific refits using Eligible_Row_ID modulo 5",
+    "anchor": "Eligible_Row_ID 0 is the first target-eligible row on or after 2016-10-03",
+    "development_folds": {
+      "walk_forward_folds": 5,
+      "test_rows_per_fold": 50,
+      "purge_phase_rows": 1
+    },
+    "purpose": "use non-overlapping future five-day windows within each phase in both development and audit",
+    "caveat": "successive labels within a phase still share a comparison window, so phase results are robustness checks rather than independent trials"
+  },
+  "baselines": [
+    "training-majority",
+    "weekly-trend persistence"
+  ],
+  "rq_boundaries": {
+    "rq1": "dashboard implementation remains frozen",
+    "rq2": "feature-family comparison under common Logistic Regression",
+    "rq3": "model-family comparison is out of scope for this package",
+    "rq4": "economic backtesting is out of scope for this package",
+    "firm_news_finbert_s1": "frozen and not loaded"
+  },
+  "claim_boundary": "All results use previously inspected 2016-2026 history and are retrospective. They cannot be described as prospectively untouched confirmation."
+}

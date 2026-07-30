@@ -1,0 +1,11 @@
+{
+  "notebook": "notebooks/v8_2_rq2_ema_aware_diagnostic.ipynb",
+  "nbformat": 4,
+  "cells": 16,
+  "code_cells": 6,
+  "code_cells_executed_in_shared_namespace": 6,
+  "stored_kernel_outputs": false,
+  "status": "passed",
+  "errors": [],
+  "note": "Code cells were executed sequentially in a shared Python namespace. Kernel-generated notebook outputs were not stored because nbformat, nbclient, and Jupyter are not installed in this build environment."
+}

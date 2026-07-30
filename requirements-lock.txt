@@ -1,0 +1,15 @@
+# Reviewed exact Dashboard/Sandbox stack on Python 3.12.
+# Formal RQ2-RQ4 recomputation uses each research/rq*/requirements.txt instead.
+streamlit==1.60.0
+pandas==3.0.5
+numpy==2.5.1
+matplotlib==3.10.8
+seaborn==0.13.2
+scikit-learn==1.8.0
+xgboost==3.0.5
+tensorflow-cpu==2.21.0; platform_system != "Darwin"
+tensorflow==2.21.0; platform_system == "Darwin"
+joblib==1.5.3
+pytest==9.1.1
+pyarrow==18.1.0
+exchange-calendars==4.5.6

@@ -1,0 +1,7 @@
+Period,Group A,Group B,Rows,Point Difference,CI Lower 95%,CI Upper 95%,Share Difference <= 0,Share Difference >= 0,Two-sided Bootstrap p,Bootstrap Replicates,Block Length
+Development OOF,Primary EMA-aware compact,Core-5 without moving-average state,1250,0.0024,-0.0048,0.0096,0.2836,0.7922,0.5674865026994601,5000,20
+Development OOF,Primary EMA-aware compact,SMA10/20-state sensitivity,1250,0.0016,-0.004,0.0072,0.34,0.757,0.6802639472105579,5000,20
+Development OOF,Primary EMA-aware compact,Legacy SMA50-ratio comparator,1250,-0.0008,-0.012,0.0104,0.5856,0.4646,0.9294141171765646,5000,20
+Retrospective audit,Primary EMA-aware compact,Core-5 without moving-average state,407,0.007371007371007371,0.0,0.0171990171990172,0.0592,1.0,0.1187762447510498,5000,20
+Retrospective audit,Primary EMA-aware compact,SMA10/20-state sensitivity,407,0.004914004914004914,-0.002457002457002457,0.019656019656019656,0.3376,0.8948,0.6754649070185963,5000,20
+Retrospective audit,Primary EMA-aware compact,Legacy SMA50-ratio comparator,407,0.0,-0.007371007371007371,0.007371007371007371,0.6422,0.6676,1.0,5000,20

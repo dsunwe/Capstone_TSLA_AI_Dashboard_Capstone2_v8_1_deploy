@@ -1,0 +1,112 @@
+{
+  "protocol_id": "TSLA-V8.2-RQ2-EMA-AWARE-RETROSPECTIVE",
+  "protocol_sha256": "e8ffafae7bc8f29a051dead4b709c9e93c030dc18c3f13104a66e069ce5785a5",
+  "input_sha256": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+  "macro_source_sha256": {
+    "CPIAUCSL": "5bf50056e886c05cbf4a1aa417c37144e20d6d500a3d80f86f83715bb96de831",
+    "UNRATE": "e77d0cfd5bfe7efcd4df6a4aa4b19489dd1751e036232ea87ad234b8c3536fc0"
+  },
+  "status": "retrospective_rq2_revision_not_prospectively_confirmatory",
+  "target": "1[mean(Close[t+1:t+5]) > mean(Close[t-4:t])]",
+  "data_rows_after_warmup": 2458,
+  "development_rows": 2046,
+  "development_start": "2016-10-03",
+  "development_end": "2024-11-18",
+  "development_target_end": "2024-11-25",
+  "audit_rows": 407,
+  "audit_start": "2024-11-26",
+  "audit_end": "2026-07-15",
+  "feature_families": {
+    "Technical \u2014 EMA-aware compact": [
+      "Daily_Return",
+      "Momentum_5",
+      "EMA8_13_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "Cross-market": [
+      "SP500_Return",
+      "QQQ_Excess_Return",
+      "QQQ_Momentum_5",
+      "QQQ_Volatility_20",
+      "QQQ_Volatility_Change_5"
+    ],
+    "Macroeconomic": [
+      "Treasury_10Y_Change_5",
+      "Yield_Curve_10Y2Y",
+      "Yield_Curve_Change_5",
+      "Fed_Funds_Change_20",
+      "Latest_CPI_YoY_Release_Change",
+      "Latest_Unemployment_Release_Change"
+    ],
+    "Broad sentiment and risk proxies": [
+      "VIX_Level",
+      "VIX_Change_5",
+      "Consumer_Sentiment",
+      "Consumer_Sentiment_Release_Change"
+    ]
+  },
+  "technical_designs": {
+    "Primary EMA-aware compact": [
+      "Daily_Return",
+      "Momentum_5",
+      "EMA8_13_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "Core-5 without moving-average state": [
+      "Daily_Return",
+      "Momentum_5",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "SMA10/20-state sensitivity": [
+      "Daily_Return",
+      "Momentum_5",
+      "SMA10_20_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "Legacy SMA50-ratio comparator": [
+      "Daily_Return",
+      "Momentum_5",
+      "SMA50_Ratio",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ]
+  },
+  "common_model": {
+    "name": "Regularised Logistic Regression",
+    "imputer": "training-fold median",
+    "scaler": "training-fold StandardScaler",
+    "C": 0.5,
+    "class_weight": "balanced",
+    "solver": "liblinear",
+    "probability_threshold": 0.5,
+    "random_state": 42
+  },
+  "maximum_absolute_primary_technical_correlation_development": 0.4567944249980394,
+  "bootstrap_replicates": 5000,
+  "bootstrap_block_length": 20,
+  "phase_offsets": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "claim_boundary": "All results use previously inspected 2016-2026 history and are retrospective. They cannot be described as prospectively untouched confirmation.",
+  "reproduction_environment": {
+    "status": "reviewed reconstruction lock; original frozen-run software versions were not captured, so this is not a bitwise environment guarantee",
+    "python": "3.12",
+    "numpy": "2.5.1",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.8.0",
+    "matplotlib": "3.10.8"
+  }
+}

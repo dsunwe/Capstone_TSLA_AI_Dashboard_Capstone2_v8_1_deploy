@@ -1,0 +1,46 @@
+{
+  "assets": [
+    "TSLA",
+    "AAPL",
+    "NVDA"
+  ],
+  "models": [
+    "Lagged Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "Compact LSTM"
+  ],
+  "periods": {
+    "Development OOF": 1250,
+    "Retrospective audit": 407
+  },
+  "probability_threshold": 0.5,
+  "combined_prediction_file": "upstream/rq4_model_predictions.csv",
+  "combined_prediction_sha256": "e6aba4b3c54ccb4ee0b5f09d8987f49b197aa52dc9b4cd3f30fd81be8ed5ffbd",
+  "sources": {
+    "TSLA": "Frozen v8.3 RQ3 predictions",
+    "AAPL": "Asset-specific replication using frozen RQ3 engine",
+    "NVDA": "Asset-specific replication using frozen RQ3 engine"
+  },
+  "source_prediction_sha256": {
+    "TSLA": "b529b49a85164a8aa2a5c3c7bc7a04feb74a31cbe1437d2e7cfd0fb07a15d97f",
+    "AAPL": "f76d0cd522db3faabbc41fd4867df0378b0a14f2531502fc2c905243085b4585",
+    "NVDA": "fb058ade00757dad2ec9024279c9fb6df492d7e20795754b0d7d4995246a919c"
+  },
+  "data_sha256": {
+    "TSLA": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+    "AAPL": "c5e6e5e303a2c2b824ead695366f53acc297b2e7e7aabf60701670084f3e05ab",
+    "NVDA": "a94b417260068f6523ec29fef240378c06a1a5ef0bcc2b80c90313bd39f1012e"
+  },
+  "rq3_engine_sha256": "268df7f52848f7b1dda1722076a7ffbe8ba980dc66a86ea02d031d5ded34c677",
+  "rq3_protocol_sha256": "56e35bed3f4980b06c142e2d928a73ab54ea20f84cf30d27d64dce8b9cd873fa",
+  "return_metrics_used_for_training_or_selection": false,
+  "software": {
+    "python": "3.12.13",
+    "numpy": "2.5.1",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.8.0",
+    "xgboost": "3.0.5",
+    "tensorflow": "2.21.0"
+  }
+}

@@ -1,0 +1,3 @@
+Period,Group A,Group B,Rows,Point Difference,CI Lower 95%,CI Upper 95%,Share Difference <= 0,Share Difference >= 0,Two-sided Bootstrap p,Bootstrap Replicates,Block Length
+Retrospective audit,Technical — EMA-aware compact,Training-majority,407,0.16216216216216217,0.06142506142506143,0.2678132678132678,0.0008,0.9992,0.001999600079984003,5000,20
+Retrospective audit,Technical — EMA-aware compact,Weekly-trend persistence,407,0.07616707616707617,0.007371007371007371,0.13513513513513514,0.0198,0.9848,0.03999200159968006,5000,20

@@ -1,0 +1,57 @@
+{
+  "validator": "Independent five-session cross-asset RQ4 validator",
+  "generated_at_utc": "2026-07-29T21:29:00.715567+00:00",
+  "protocol_id": "V8.4-RQ4-FIVE-SESSION-CROSS-ASSET-DESCRIPTIVE",
+  "overall_status": "PASS",
+  "checks_total": 38,
+  "checks_passed": 38,
+  "checks_failed": 0,
+  "artifacts_written": true,
+  "independence_statement": "validate_rq4.py does not import run_rq4_experiment. Target labels, signal dates, five sleeves, frictions, NAVs, risk metrics, Buy-and-Hold, and matched allocations were recomputed from frozen source files.",
+  "coverage": {
+    "assets": [
+      "TSLA",
+      "AAPL",
+      "NVDA"
+    ],
+    "periods": [
+      "Development OOF",
+      "Retrospective audit"
+    ],
+    "models": [
+      "Lagged Logistic Regression",
+      "Random Forest",
+      "XGBoost",
+      "Compact LSTM"
+    ],
+    "moving_average_baselines": [
+      "EMA8/EMA13 State",
+      "SMA10/SMA20 State"
+    ],
+    "combined_prediction_rows": 19884,
+    "unique_signal_origins": 4971,
+    "executable_signal_origins": 4968,
+    "headline_strategy_paths": 42,
+    "equity_rows": 34986,
+    "sleeve_transition_rows": 11376,
+    "exposure_matched_rows": 24
+  },
+  "numerical_absolute_tolerance": 5e-12,
+  "diagnostics": {
+    "signal_ledger_max_abs_difference": 5.684341886080802e-14,
+    "equity_max_abs_difference": 3.552713678800501e-15,
+    "trade_ledger_max_abs_difference": 8.881784197001252e-16,
+    "headline_metric_max_abs_difference": 3.552713678800501e-15,
+    "exposure_matched_max_abs_difference": 1.7763568394002505e-15
+  },
+  "scope_assertions": {
+    "rq4_bootstrap_used": false,
+    "quarterly_rolling_retraining_used": false,
+    "return_metrics_used_for_model_training_or_selection": false
+  },
+  "failed_check_ids": [],
+  "artifacts": {
+    "checks_csv": "outputs/rq4_validation_checks.csv",
+    "report_json": "outputs/rq4_validation_report.json"
+  }
+}

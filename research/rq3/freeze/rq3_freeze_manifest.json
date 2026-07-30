@@ -1,0 +1,18 @@
+{
+  "protocol_id": "TSLA-V8.3-RQ3-COMMON-SEQUENCE-RETROSPECTIVE",
+  "protocol_sha256": "56e35bed3f4980b06c142e2d928a73ab54ea20f84cf30d27d64dce8b9cd873fa",
+  "run_script_sha256": "268df7f52848f7b1dda1722076a7ffbe8ba980dc66a86ea02d031d5ded34c677",
+  "input_sha256": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+  "upstream_rq2_protocol_sha256": "e8ffafae7bc8f29a051dead4b709c9e93c030dc18c3f13104a66e069ce5785a5",
+  "selected_model": "Lagged Logistic Regression",
+  "selection_data": "Development outer-fold OOF only",
+  "threshold": 0.5,
+  "files": {
+    "freeze/rq3_selected_preprocessor.json": "4ca3472139de6f045b40769d4d4e19f69789b37d00ad0850898343d05b0af9b6",
+    "freeze/rq3_selected_model_seed_42.joblib": "1b7da7131a7c2256986acb51121f3618dc9eca452bffe56ff71dde7fa5d62f04",
+    "freeze/rq3_selected_model.json": "21fbc8fd8ddf3c4bb59557ce40ae323500b8ff3f41aa59af386a150fb98ae038",
+    "freeze/rq3_selected_oof_predictions.csv": "4debf09c38d24fdb70351084a2320b4d3f052b11675a72abb9b03d3050f71ba5",
+    "freeze/rq3_selected_audit_predictions.csv": "d9128188c0944eda4fe47c354b5e5698c5496d69dc7c095564493e715eb4563a",
+    "freeze/rq3_frozen_rq4_signal.csv": "0155b781610c3978e587d3c3543f398d960df7699a5655bab34f99a46b7daa7a"
+  }
+}

@@ -1,0 +1,4 @@
+# Complete local Dashboard, Interactive Sandbox, and test stack.
+#
+# This exact environment includes TensorFlow for live LSTM Sandbox training.
+-r requirements-lock.txt

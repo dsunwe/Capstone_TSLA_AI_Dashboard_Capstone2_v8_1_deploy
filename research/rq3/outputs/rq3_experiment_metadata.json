@@ -1,0 +1,50 @@
+{
+  "protocol_id": "TSLA-V8.3-RQ3-COMMON-SEQUENCE-RETROSPECTIVE",
+  "protocol_sha256": "56e35bed3f4980b06c142e2d928a73ab54ea20f84cf30d27d64dce8b9cd873fa",
+  "run_script_sha256": "268df7f52848f7b1dda1722076a7ffbe8ba980dc66a86ea02d031d5ded34c677",
+  "input_sha256": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+  "status": "retrospective_rq3_revision_not_prospectively_confirmatory",
+  "features": [
+    "Daily_Return",
+    "Momentum_5",
+    "EMA8_13_State",
+    "Volatility_20",
+    "Drawdown",
+    "Volume_Ratio"
+  ],
+  "lookback": 20,
+  "sequence_shape": [
+    20,
+    6
+  ],
+  "eligible_origins": 2458,
+  "development_origins": 2046,
+  "development_start": "2016-10-03",
+  "development_end": "2024-11-18",
+  "development_oof_rows_per_comparator": 1250,
+  "audit_origins": 407,
+  "audit_start": "2024-11-26",
+  "audit_end": "2026-07-15",
+  "main_models": [
+    "Lagged Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "Compact LSTM"
+  ],
+  "stochastic_seeds": [
+    42,
+    43,
+    44
+  ],
+  "selected_model": "Lagged Logistic Regression",
+  "selected_final_configuration": {
+    "C": 5.0
+  },
+  "selected_final_epoch": null,
+  "selection_rule": "development-only one-standard-error",
+  "bootstrap_replicates": 5000,
+  "bootstrap_block_length": 20,
+  "freeze_manifest_sha256": "1488eab96f0a731f17d6300324daeaa6469b2ab8a790f6003577b88c3af0c6f2",
+  "total_runtime_seconds": 1141.0377874440019,
+  "claim_boundary": "All data through July 2026 were previously inspected. The audit is a retrospective temporal audit, not a prospectively untouched confirmation."
+}

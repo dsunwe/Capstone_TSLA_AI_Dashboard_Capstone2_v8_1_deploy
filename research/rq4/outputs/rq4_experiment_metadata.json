@@ -1,0 +1,57 @@
+{
+  "protocol_id": "V8.4-RQ4-FIVE-SESSION-CROSS-ASSET-DESCRIPTIVE",
+  "protocol_sha256": "deedfabab223f42bdabe42c11a331f27092810fd21c683b3fc147d275e7c50e0",
+  "run_script_sha256": "00e630e8a9fe47e0d0388c98e14c202ea0e6fe6946398a4bd0762852cfbca8b0",
+  "prediction_manifest_sha256": "0077125fcd09418aabe8c5a2d8345ef808d973913739de8ce832c20951be1f1d",
+  "combined_predictions_sha256": "e6aba4b3c54ccb4ee0b5f09d8987f49b197aa52dc9b4cd3f30fd81be8ed5ffbd",
+  "assets": [
+    "TSLA",
+    "AAPL",
+    "NVDA"
+  ],
+  "models": [
+    "Lagged Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "Compact LSTM"
+  ],
+  "main_moving_average_baselines": [
+    "EMA8/EMA13 State",
+    "SMA10/SMA20 State"
+  ],
+  "raw_model_prediction_rows": 19884,
+  "asset_signal_rows": 4971,
+  "development_executable_signal_rows_per_asset": 1250,
+  "audit_raw_signal_rows_per_asset": 407,
+  "audit_executable_signal_rows_per_asset": 406,
+  "excluded_terminal_signals": [
+    {
+      "Asset": "TSLA",
+      "Period": "Retrospective audit",
+      "Date": "2026-07-15",
+      "Exclusion Reason": "missing Open[t+6]"
+    },
+    {
+      "Asset": "AAPL",
+      "Period": "Retrospective audit",
+      "Date": "2026-07-15",
+      "Exclusion Reason": "missing Open[t+6]"
+    },
+    {
+      "Asset": "NVDA",
+      "Period": "Retrospective audit",
+      "Date": "2026-07-15",
+      "Exclusion Reason": "missing Open[t+6]"
+    }
+  ],
+  "five_self_financing_sleeves": true,
+  "daily_cross_sleeve_rebalancing": false,
+  "entry_factor": 0.9985017481269356,
+  "exit_factor": 0.9985005,
+  "bootstrap_used": false,
+  "quarterly_rolling_retraining_used": false,
+  "return_metrics_used_for_model_training_or_selection": false,
+  "python": "3.12.13",
+  "numpy": "2.5.1",
+  "pandas": "3.0.5"
+}

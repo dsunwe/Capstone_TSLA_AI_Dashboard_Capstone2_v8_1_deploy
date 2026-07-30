@@ -1,0 +1,24 @@
+{
+  "selected_model": "Lagged Logistic Regression",
+  "configuration": {
+    "C": 5.0
+  },
+  "selected_epoch": null,
+  "features": [
+    "Daily_Return",
+    "Momentum_5",
+    "EMA8_13_State",
+    "Volatility_20",
+    "Drawdown",
+    "Volume_Ratio"
+  ],
+  "lookback": 20,
+  "tabular_feature_count": 120,
+  "seeds": [
+    42
+  ],
+  "probability_threshold": 0.5,
+  "selection_rule": "development-only one-standard-error",
+  "audit_used_for_selection": false,
+  "rq4_returns_used_for_selection": false
+}

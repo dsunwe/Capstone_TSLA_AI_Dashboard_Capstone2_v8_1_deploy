@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "TSLA-V8-FIVE-SESSION-PROSPECTIVE-DRAFT",
+  "status": "draft_pending_external_timestamp",
+  "prepared_date": "2026-07-29",
+  "purpose": "Draft prospective confirmation of the final five-session TSLA design after the v8 RQ2-RQ4 choices are externally locked.",
+  "retrospective_evidence": {
+    "raw_data_cutoff": "2026-07-22",
+    "last_fully_labelled_signal_date": "2026-07-15",
+    "classification": "Retrospective chronological development evidence; held out within each run but repeatedly observed across project versions.",
+    "may_be_relabelled_confirmatory": false
+  },
+  "external_lock": {
+    "evidence": null,
+    "timestamp_utc": null,
+    "verified_by": null,
+    "first_eligible_signal_date": null,
+    "first_eligible_signal_close_utc": null
+  },
+  "locked_design": {
+    "asset": "TSLA",
+    "primary_model": "Lagged Logistic Regression",
+    "secondary_models": [
+      "Random Forest",
+      "XGBoost",
+      "Compact LSTM"
+    ],
+    "feature_streams": [
+      "Daily_Return",
+      "Momentum_5",
+      "EMA8_13_State",
+      "Volatility_20",
+      "Drawdown",
+      "Volume_Ratio"
+    ],
+    "lookback_trading_sessions": 20,
+    "target": "1[mean(Close[t+1:t+5]) > mean(Close[t-4:t])] using information available through Close[t]",
+    "execution": "Signal after Close[t], execute at Open[t+1], and exit each five-session sleeve at Open[t+6]",
+    "probability_threshold": 0.5,
+    "transaction_cost_bps": 10,
+    "slippage_bps": 5,
+    "self_financing_sleeves": 5,
+    "initial_weight_per_sleeve": 0.2,
+    "quarterly_rolling_retraining": false,
+    "lstm_seeds": [
+      42,
+      43,
+      44
+    ],
+    "model_artifact_hash": null,
+    "feature_set_hash": null,
+    "code_release_hash": null,
+    "preprocessor_hash": null,
+    "training_data_snapshot_hash": null
+  },
+  "stopping_rule": {
+    "minimum_consecutive_labelled_signals": 60,
+    "confirmatory_analysis_at": 60,
+    "no_result_dependent_early_stopping": true,
+    "final_metrics_before_minimum": false
+  },
+  "primary_metrics": [
+    "Balanced Accuracy",
+    "Macro F1",
+    "ROC-AUC",
+    "Brier Score",
+    "Net Total Return",
+    "Maximum Drawdown",
+    "Average Exposure",
+    "Timing Value versus constant-exposure passive reference (percentage points)"
+  ],
+  "amendment_policy": "Any material change to features, model, threshold, target, costs, seeds or stopping rule requires a new protocol ID and a new future window. UI-only changes must be logged.",
+  "owner_action_required": "Obtain supervisor acknowledgement or another externally verifiable timestamp before the first prospective signal. Until then, status must remain draft and no confirmatory claim may be made."
+}

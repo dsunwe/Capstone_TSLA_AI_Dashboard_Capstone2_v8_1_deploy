@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "execution_method": "sequential_in_process",
+  "notebook": "notebooks/v8_4_rq4_five_session_cross_asset.ipynb",
+  "total_cells": 20,
+  "code_cells": 11,
+  "executed_code_cells": 11,
+  "output_blocks": 12,
+  "error_outputs": []
+}

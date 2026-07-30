@@ -1,0 +1,201 @@
+{
+  "protocol_id": "TSLA-V8.3-RQ3-COMMON-SEQUENCE-RETROSPECTIVE",
+  "protocol_date": "2026-07-29",
+  "status": "retrospective_rq3_revision_not_prospectively_confirmatory",
+  "research_question": "Using the frozen EMA-aware Technical feature specification identified in RQ2, how do regularised Logistic Regression, Random Forest, XGBoost and a compact LSTM compare in retrospective walk-forward prediction of Tesla's rolling five-session mean-price trend, and does any nonlinear or sequential model provide robust incremental predictive value over linear and transparent trend baselines?",
+  "primary_asset": "TSLA",
+  "input_snapshot": {
+    "file": "data/TSLA_features_common_window.csv",
+    "sha256": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+    "source": "Frozen v8.2 RQ2 input snapshot"
+  },
+  "upstream_rq2": {
+    "protocol_file": "upstream/rq2_protocol.json",
+    "protocol_sha256": "e8ffafae7bc8f29a051dead4b709c9e93c030dc18c3f13104a66e069ce5785a5",
+    "oof_predictions_file": "upstream/rq2_feature_family_oof_predictions.csv",
+    "oof_predictions_sha256": "093449e9aa4020a929a797acdc8d20336f988faa0ee6081154791d94fe293262",
+    "audit_predictions_file": "upstream/rq2_feature_family_audit_predictions.csv",
+    "audit_predictions_sha256": "7a7097e4c21592ef36e3c0871d9b5b05858a84503506032896eff7fd0010634a"
+  },
+  "target": {
+    "name": "Rolling five-trading-day mean-price trend",
+    "formula": "1[mean(Close[t+1:t+5]) > mean(Close[t-4:t])]",
+    "information_cutoff": "after Close[t]",
+    "horizon_trading_days": 5,
+    "interpretation_boundary": "classification target, not trading win rate or an executable five-session endpoint return"
+  },
+  "frozen_features": [
+    "Daily_Return",
+    "Momentum_5",
+    "EMA8_13_State",
+    "Volatility_20",
+    "Drawdown",
+    "Volume_Ratio"
+  ],
+  "input_representation": {
+    "lookback_trading_sessions": 20,
+    "sequence_shape": [20, 6],
+    "common_information_rule": "All four main models receive the same six feature streams over t-19 through t.",
+    "tabular_representation": "Flatten the common 20 by 6 tensor in chronological time-major order to 120 ordered lag inputs.",
+    "lstm_representation": "Retain the common 20 by 6 tensor.",
+    "preprocessing": "Fit a six-channel median imputer and StandardScaler only on unique raw feature dates available to the relevant training origins; transform the common tensor before flattening or LSTM input.",
+    "current_day_bridge_control": "The frozen RQ2 Logistic Regression using only the six values at t is recomputed as a supplementary bridge and is excluded from RQ3 model selection."
+  },
+  "development_and_audit": {
+    "warmup_origin_start": "2016-10-03",
+    "development_label_end_before": "2024-11-26",
+    "retrospective_audit_start": "2024-11-26",
+    "walk_forward_outer_folds": 5,
+    "outer_test_rows_per_fold": 250,
+    "inner_folds": 3,
+    "inner_test_rows_per_fold": 125,
+    "purge_origin_rows": 5,
+    "probability_threshold": 0.5
+  },
+  "main_models": {
+    "Lagged Logistic Regression": {
+      "complexity_rank": 1,
+      "candidate_configurations": [
+        {"C": 0.05},
+        {"C": 0.5},
+        {"C": 5.0}
+      ],
+      "fixed": {
+        "penalty": "l2",
+        "class_weight": "balanced",
+        "solver": "liblinear",
+        "max_iter": 5000
+      }
+    },
+    "Random Forest": {
+      "complexity_rank": 2,
+      "candidate_configurations": [
+        {"n_estimators": 300, "max_depth": 4, "min_samples_leaf": 10, "max_features": "sqrt"},
+        {"n_estimators": 300, "max_depth": 6, "min_samples_leaf": 10, "max_features": "sqrt"},
+        {"n_estimators": 300, "max_depth": 8, "min_samples_leaf": 5, "max_features": "sqrt"},
+        {"n_estimators": 300, "max_depth": null, "min_samples_leaf": 10, "max_features": "sqrt"}
+      ],
+      "fixed": {
+        "class_weight": "balanced_subsample",
+        "n_jobs": 1
+      }
+    },
+    "XGBoost": {
+      "complexity_rank": 3,
+      "candidate_configurations": [
+        {"n_estimators": 250, "max_depth": 2, "learning_rate": 0.03, "min_child_weight": 5},
+        {"n_estimators": 200, "max_depth": 2, "learning_rate": 0.05, "min_child_weight": 10},
+        {"n_estimators": 250, "max_depth": 3, "learning_rate": 0.03, "min_child_weight": 5},
+        {"n_estimators": 200, "max_depth": 3, "learning_rate": 0.05, "min_child_weight": 10}
+      ],
+      "fixed": {
+        "subsample": 0.8,
+        "colsample_bytree": 0.7,
+        "reg_lambda": 1.0,
+        "objective": "binary:logistic",
+        "eval_metric": "logloss",
+        "tree_method": "hist",
+        "n_jobs": 1
+      }
+    },
+    "Compact LSTM": {
+      "complexity_rank": 4,
+      "candidate_configurations": [
+        {"units": 8, "dropout": 0.1, "learning_rate": 0.001},
+        {"units": 8, "dropout": 0.3, "learning_rate": 0.0005},
+        {"units": 16, "dropout": 0.1, "learning_rate": 0.001},
+        {"units": 16, "dropout": 0.3, "learning_rate": 0.0005}
+      ],
+      "fixed": {
+        "layers": "one unidirectional LSTM followed by one sigmoid output",
+        "batch_size": 32,
+        "maximum_epochs": 100,
+        "early_stopping_patience": 10,
+        "early_stopping_monitor": "validation loss",
+        "shuffle": false,
+        "optimizer": "Adam",
+        "gradient_clipnorm": 1.0
+      }
+    }
+  },
+  "tuning": {
+    "selection_metric": "Balanced Accuracy",
+    "inner_rule": "Choose the candidate with the highest mean inner-fold Balanced Accuracy; ties are resolved by candidate order.",
+    "lstm_inner_seed": 42,
+    "lstm_epoch_rule": "Use early stopping only inside inner validation folds; refit each outer or full-development model for the median selected best epoch without using the outer test or retrospective audit.",
+    "final_configuration_rule": "Retune each model with three purged inner folds on the complete development period before the retrospective audit.",
+    "audit_is_excluded": true
+  },
+  "stochastic_ensemble": {
+    "models": ["Random Forest", "XGBoost", "Compact LSTM"],
+    "seeds": [42, 43, 44],
+    "rule": "Arithmetic mean of the three seed probabilities before applying threshold 0.50.",
+    "inner_tuning_rule": "Use seed 42 during bounded inner tuning; use all three seeds only for outer-fold and full-development final fits."
+  },
+  "transparent_baselines": {
+    "Training-majority": "Most common class in the applicable training period.",
+    "Weekly-trend persistence": "1[mean(Close[t-4:t]) > mean(Close[t-9:t-5])].",
+    "EMA8/13 state": "1[EMA8[t] > EMA13[t]]."
+  },
+  "metrics": [
+    "Accuracy",
+    "Balanced Accuracy",
+    "Macro F1",
+    "MCC",
+    "Recall Down",
+    "Recall Up",
+    "ROC-AUC",
+    "Brier Score"
+  ],
+  "model_selection": {
+    "data_scope": "development outer-fold OOF only",
+    "rule": "One-standard-error rule applied to mean outer-fold Balanced Accuracy.",
+    "standard_error": "Standard deviation of the best model's five outer-fold Balanced Accuracy values divided by sqrt(5).",
+    "simplicity_order": [
+      "Lagged Logistic Regression",
+      "Random Forest",
+      "XGBoost",
+      "Compact LSTM"
+    ],
+    "audit_metrics_used": false,
+    "rq4_returns_used": false
+  },
+  "uncertainty": {
+    "method": "paired circular moving-block bootstrap",
+    "replicates": 5000,
+    "block_length_trading_days": 20,
+    "primary_comparisons": [
+      "Random Forest minus Lagged Logistic Regression",
+      "XGBoost minus Lagged Logistic Regression",
+      "Compact LSTM minus Lagged Logistic Regression"
+    ],
+    "primary_multiplicity": "Holm adjustment across the three complex-versus-linear contrasts, separately by period and metric.",
+    "secondary_comparisons": "Each main model versus Weekly-trend persistence and EMA8/13 state, Holm-adjusted separately by period and metric."
+  },
+  "overlap_robustness": {
+    "method": "Evaluate the already frozen daily OOF and retrospective-audit predictions separately within five Eligible_Row_ID modulo-5 phases.",
+    "anchor": "Eligible_Row_ID 0 is the first target-eligible origin on or after 2016-10-03.",
+    "refitting": false,
+    "purpose": "Inspect whether model rankings and paired differences persist when evaluated on non-overlapping five-session forward windows.",
+    "caveat": "Models are trained on the full daily development origins, and successive phase labels still share the trailing comparison window; phase results are robustness diagnostics rather than independent trials."
+  },
+  "freeze_for_rq4": {
+    "contents": [
+      "selected model family and final development-only hyperparameters",
+      "six feature names and order",
+      "20-session lookback and preprocessing parameters",
+      "seeds and threshold",
+      "development OOF probabilities and signals",
+      "retrospective-audit probabilities and signals",
+      "input, upstream RQ2 protocol, RQ3 protocol and frozen-file hashes"
+    ],
+    "prohibition": "RQ4 must not change the selected model or threshold after inspecting economic returns."
+  },
+  "scope_boundaries": {
+    "assets": "TSLA only; AAPL and NVDA portability checks are excluded from core RQ3.",
+    "rq2": "Feature-family and moving-average-expression selection remain frozen upstream.",
+    "rq3": "Classification comparison and development-only model selection.",
+    "rq4": "Economic execution, holding, overlap and transaction-cost rules are out of scope."
+  },
+  "claim_boundary": "All data through July 2026 were previously inspected. The audit is a retrospective temporal audit, not a prospectively untouched confirmation."
+}

@@ -1,0 +1,25 @@
+Scope,Outer Fold,Model,Selected Configuration,Selected Epoch,Selection Metric,Audit Used
+Outer fold 1,1.0,Lagged Logistic Regression,"{""C"":0.5}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 1,1.0,Random Forest,"{""max_depth"":6,""max_features"":""sqrt"",""min_samples_leaf"":10,""n_estimators"":300}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 1,1.0,XGBoost,"{""learning_rate"":0.05,""max_depth"":3,""min_child_weight"":10,""n_estimators"":200}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 1,1.0,Compact LSTM,"{""dropout"":0.1,""learning_rate"":0.001,""units"":16}",2.0,Mean inner-fold Balanced Accuracy,False
+Outer fold 2,2.0,Lagged Logistic Regression,"{""C"":5.0}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 2,2.0,Random Forest,"{""max_depth"":4,""max_features"":""sqrt"",""min_samples_leaf"":10,""n_estimators"":300}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 2,2.0,XGBoost,"{""learning_rate"":0.05,""max_depth"":3,""min_child_weight"":10,""n_estimators"":200}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 2,2.0,Compact LSTM,"{""dropout"":0.3,""learning_rate"":0.0005,""units"":16}",31.0,Mean inner-fold Balanced Accuracy,False
+Outer fold 3,3.0,Lagged Logistic Regression,"{""C"":5.0}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 3,3.0,Random Forest,"{""max_depth"":6,""max_features"":""sqrt"",""min_samples_leaf"":10,""n_estimators"":300}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 3,3.0,XGBoost,"{""learning_rate"":0.03,""max_depth"":2,""min_child_weight"":5,""n_estimators"":250}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 3,3.0,Compact LSTM,"{""dropout"":0.1,""learning_rate"":0.001,""units"":8}",36.0,Mean inner-fold Balanced Accuracy,False
+Outer fold 4,4.0,Lagged Logistic Regression,"{""C"":0.05}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 4,4.0,Random Forest,"{""max_depth"":null,""max_features"":""sqrt"",""min_samples_leaf"":10,""n_estimators"":300}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 4,4.0,XGBoost,"{""learning_rate"":0.05,""max_depth"":3,""min_child_weight"":10,""n_estimators"":200}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 4,4.0,Compact LSTM,"{""dropout"":0.1,""learning_rate"":0.001,""units"":16}",18.0,Mean inner-fold Balanced Accuracy,False
+Outer fold 5,5.0,Lagged Logistic Regression,"{""C"":0.05}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 5,5.0,Random Forest,"{""max_depth"":null,""max_features"":""sqrt"",""min_samples_leaf"":10,""n_estimators"":300}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 5,5.0,XGBoost,"{""learning_rate"":0.05,""max_depth"":3,""min_child_weight"":10,""n_estimators"":200}",,Mean inner-fold Balanced Accuracy,False
+Outer fold 5,5.0,Compact LSTM,"{""dropout"":0.1,""learning_rate"":0.001,""units"":16}",12.0,Mean inner-fold Balanced Accuracy,False
+Full development,,Lagged Logistic Regression,"{""C"":5.0}",,Mean inner-fold Balanced Accuracy,False
+Full development,,Random Forest,"{""max_depth"":8,""max_features"":""sqrt"",""min_samples_leaf"":5,""n_estimators"":300}",,Mean inner-fold Balanced Accuracy,False
+Full development,,XGBoost,"{""learning_rate"":0.03,""max_depth"":3,""min_child_weight"":5,""n_estimators"":250}",,Mean inner-fold Balanced Accuracy,False
+Full development,,Compact LSTM,"{""dropout"":0.1,""learning_rate"":0.001,""units"":8}",37.0,Mean inner-fold Balanced Accuracy,False

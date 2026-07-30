@@ -1,0 +1,10 @@
+numpy==2.5.1
+pandas==3.0.5
+scikit-learn==1.8.0
+matplotlib==3.10.8
+xgboost==3.0.5
+tensorflow-cpu==2.21.0; platform_system != "Darwin"
+tensorflow==2.21.0; platform_system == "Darwin"
+joblib
+nbformat==5.10.4
+nbclient==0.11.0

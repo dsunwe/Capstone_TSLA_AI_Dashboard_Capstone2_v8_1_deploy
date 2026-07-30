@@ -1,0 +1,43 @@
+{
+  "asset": "AAPL",
+  "status": "retrospective cross-asset replication",
+  "prediction_role": "asset-specific RQ3-compatible inputs for RQ4",
+  "target": {
+    "name": "Rolling five-trading-day mean-price trend",
+    "formula": "1[mean(Close[t+1:t+5]) > mean(Close[t-4:t])]",
+    "information_cutoff": "after Close[t]",
+    "horizon_trading_days": 5,
+    "interpretation_boundary": "classification target, not trading win rate or an executable five-session endpoint return"
+  },
+  "features": [
+    "Daily_Return",
+    "Momentum_5",
+    "EMA8_13_State",
+    "Volatility_20",
+    "Drawdown",
+    "Volume_Ratio"
+  ],
+  "lookback": 20,
+  "threshold": 0.5,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "development_oof_rows_per_model": 1250,
+  "retrospective_audit_rows_per_model": 407,
+  "input_file": "data/AAPL_features_common_window.csv",
+  "input_sha256": "c5e6e5e303a2c2b824ead695366f53acc297b2e7e7aabf60701670084f3e05ab",
+  "rq3_engine_sha256": "268df7f52848f7b1dda1722076a7ffbe8ba980dc66a86ea02d031d5ded34c677",
+  "rq3_protocol_sha256": "56e35bed3f4980b06c142e2d928a73ab54ea20f84cf30d27d64dce8b9cd873fa",
+  "return_metrics_used_for_training_or_selection": false,
+  "runtime_seconds": 1119.929996235005,
+  "software": {
+    "python": "3.12.13",
+    "numpy": "2.5.1",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.8.0",
+    "xgboost": "3.0.5",
+    "tensorflow": "2.21.0"
+  }
+}

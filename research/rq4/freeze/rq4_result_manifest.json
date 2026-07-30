@@ -1,0 +1,263 @@
+{
+  "protocol_id": "V8.4-RQ4-FIVE-SESSION-CROSS-ASSET-DESCRIPTIVE",
+  "manifest_scope": "Every formal file in the final archive except the manifest itself.",
+  "quarterly_rolling_retraining_included": false,
+  "file_count": 51,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "e8b301547dbde8a74ae953ed07f820868a8ae1ad4ef02223fc844312286ebc5f",
+      "bytes": 6335
+    },
+    {
+      "path": "build_notebook.py",
+      "sha256": "49203c377e5f2890751c109978fe23d5294891c53a345bf01cc2fb4715c30efc",
+      "bytes": 27674
+    },
+    {
+      "path": "build_readme.py",
+      "sha256": "84e978f28e7f334ddf6da90cae31cbef6bad086a0c0296893bbadfd38d9a8a0f",
+      "bytes": 10057
+    },
+    {
+      "path": "data/AAPL_features_common_window.csv",
+      "sha256": "c5e6e5e303a2c2b824ead695366f53acc297b2e7e7aabf60701670084f3e05ab",
+      "bytes": 2913123
+    },
+    {
+      "path": "data/NVDA_features_common_window.csv",
+      "sha256": "a94b417260068f6523ec29fef240378c06a1a5ef0bcc2b80c90313bd39f1012e",
+      "bytes": 2908311
+    },
+    {
+      "path": "data/TSLA_features_common_window.csv",
+      "sha256": "9ffd45fe71dae7c66debd44372a3287e0d9b6d5ed262d4911c10692575cb3bcc",
+      "bytes": 2919521
+    },
+    {
+      "path": "figures/rq4_development_model_returns.png",
+      "sha256": "5052f0f1caeefe1eec7753aa18c42fa8f79ec05415f6fa1edfc2e13f08377dd6",
+      "bytes": 117145
+    },
+    {
+      "path": "figures/rq4_development_strategy_comparison.png",
+      "sha256": "f28fc6ec5e060255921c48323c8a1112914a2f6b24e1a02e3908c5cefa00de59",
+      "bytes": 130617
+    },
+    {
+      "path": "figures/rq4_development_timing_value.png",
+      "sha256": "87d85f45f082e400cd0c9691134d25923730d42c98c80ec2d4a33ef0e34e0b12",
+      "bytes": 114202
+    },
+    {
+      "path": "figures/rq4_later_period_model_returns.png",
+      "sha256": "fd4b14fafa04db2fd3cb9ea66bb000f5af6f6c22dbc3a518ca81bd91345d2c82",
+      "bytes": 98239
+    },
+    {
+      "path": "finalize_package.py",
+      "sha256": "08905c89a40e43b450427b28966ecda53a57a62ea6c8810be6a6e13853b91eed",
+      "bytes": 3151
+    },
+    {
+      "path": "notebooks/v8_4_rq4_five_session_cross_asset.ipynb",
+      "sha256": "1d520c67fe9bd812af88ad71a4049d94365453e026a35f2b4e31e1e99c4507b3",
+      "bytes": 670066
+    },
+    {
+      "path": "outputs/AAPL_rq3_classification_summary.csv",
+      "sha256": "c721d987965e3c8347ab2bb2657dc353533bfb5f79060cd1683a0af0200d1c93",
+      "bytes": 2667
+    },
+    {
+      "path": "outputs/AAPL_rq3_fold_metrics.csv",
+      "sha256": "0e9e228882180fa09a0c0da48d86a018b33add6190bd056d2141077e7866b362",
+      "bytes": 8818
+    },
+    {
+      "path": "outputs/AAPL_rq3_inner_tuning_results.csv",
+      "sha256": "c5f715ef42049fd8bb90766ef1314cf95eb30a971b2dc4fb20295a5dac071259",
+      "bytes": 102905
+    },
+    {
+      "path": "outputs/AAPL_rq3_outer_folds.csv",
+      "sha256": "0975331083ab3475d0ceabd8bea96ea75e6a3eb1c10416f167036660c0568162",
+      "bytes": 464
+    },
+    {
+      "path": "outputs/AAPL_rq3_run_metadata.json",
+      "sha256": "f5f6b39dc88381cb990397948c6db8a75d45a05700e53700d66e462569de8630",
+      "bytes": 1377
+    },
+    {
+      "path": "outputs/AAPL_rq3_selected_configurations.csv",
+      "sha256": "40a52bfcb57669e9a4d3b7011c0e0bd3c540c3c5aa0c9b970f4df2e6e4483c60",
+      "bytes": 3678
+    },
+    {
+      "path": "outputs/NVDA_rq3_classification_summary.csv",
+      "sha256": "e694cb510911b40aa0f2eafd4b3f0eb20a9c6e5107cd97d4313537bc67ce276d",
+      "bytes": 2685
+    },
+    {
+      "path": "outputs/NVDA_rq3_fold_metrics.csv",
+      "sha256": "cb2bdec3df6305ce4b20c4187e53754de6534154cd27db771f528a4bc3999110",
+      "bytes": 8843
+    },
+    {
+      "path": "outputs/NVDA_rq3_inner_tuning_results.csv",
+      "sha256": "b9e6655ab76fb67b7b9ed2593a68dd007934d22ff4d51e0287f9d912d0d875a6",
+      "bytes": 103386
+    },
+    {
+      "path": "outputs/NVDA_rq3_outer_folds.csv",
+      "sha256": "0074ce3f002f449a55fcbaf029a940be402f4862f21e9fa7a872a3c38ace075c",
+      "bytes": 464
+    },
+    {
+      "path": "outputs/NVDA_rq3_run_metadata.json",
+      "sha256": "bccf83ac1d2eeda3cbe6ae47efa31648d4ab574470a1ea0ec0f921d249ab8a9b",
+      "bytes": 1377
+    },
+    {
+      "path": "outputs/NVDA_rq3_selected_configurations.csv",
+      "sha256": "4f3930b614f95d93e2e2e362c1089a947052e73cf3c21e54b754a35961eac1ae",
+      "bytes": 3667
+    },
+    {
+      "path": "outputs/rq4_cross_asset_classification_summary.csv",
+      "sha256": "bb6e73d3339904de3f0896999f4b72376a2a27efef06388930bb4b0f3197e1d3",
+      "bytes": 6482
+    },
+    {
+      "path": "outputs/rq4_cross_asset_selected_configurations.csv",
+      "sha256": "88e580c88ba45616be932aa9af049bc614e17cb51d9af7023abcf167f649528f",
+      "bytes": 10673
+    },
+    {
+      "path": "outputs/rq4_equity_curves.csv",
+      "sha256": "e56de42336cba5d9f4a6857b0252a9d1ecd058943c346c769a327e856588e22a",
+      "bytes": 7718155
+    },
+    {
+      "path": "outputs/rq4_experiment_metadata.json",
+      "sha256": "0adceaffbf995d86bbd0448047b8bcf6d0a7ef75aec9ee7521d4f2f312c0e399",
+      "bytes": 1748
+    },
+    {
+      "path": "outputs/rq4_exposure_matched_buy_hold.csv",
+      "sha256": "ad1aa77458a4d5fb2d10236d6c97092de875cbdbd8da4a59323eec9fdcbb3672",
+      "bytes": 11195
+    },
+    {
+      "path": "outputs/rq4_headline_metrics.csv",
+      "sha256": "fcb7282d55418d9d91059ad7e3cae6fca3009fedb950f1dde62b59c376f5ed4a",
+      "bytes": 10052
+    },
+    {
+      "path": "outputs/rq4_model_results.csv",
+      "sha256": "2fb54d25f094c5b75c94c9cd9fb13759398269501fef6f18c22c97dcca4375b6",
+      "bytes": 8845
+    },
+    {
+      "path": "outputs/rq4_notebook_validation.json",
+      "sha256": "ce7de71aeabb93d5d23dc044b35a8dc3ab41e71d85eeae6b20755d229f49b0aa",
+      "bytes": 253
+    },
+    {
+      "path": "outputs/rq4_signal_ledger.csv",
+      "sha256": "785e293521b81b26eaaa95fa98ad5e1e2ee63e5fa8623c17cc5b7a0b8a10ad84",
+      "bytes": 1265350
+    },
+    {
+      "path": "outputs/rq4_sleeve_trade_ledger.csv",
+      "sha256": "7744d6f8d5e58cb89280a47ddfd7038ac4809c280e44358c502dd3b4d40631ef",
+      "bytes": 1535097
+    },
+    {
+      "path": "outputs/rq4_validation_checks.csv",
+      "sha256": "2508d824743f7045a3752201f30203ec48a95879060cf50ca8cf835148de094a",
+      "bytes": 13364
+    },
+    {
+      "path": "outputs/rq4_validation_report.json",
+      "sha256": "2831a354c88d27432496c56cca68aab26f9eaf5b1f73c68f3f7b20d01aa4658f",
+      "bytes": 1885
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "deedfabab223f42bdabe42c11a331f27092810fd21c683b3fc147d275e7c50e0",
+      "bytes": 9894
+    },
+    {
+      "path": "requirements-cross-asset.txt",
+      "sha256": "d13a453c250e89177c3944a33e8e737efc3f5048a46e535aff8cec66f6034ef2",
+      "bytes": 451
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "8f867d8e252fb17eb50b387832777fdb55d3f473557a4d797c24ffe2d09331e1",
+      "bytes": 268
+    },
+    {
+      "path": "run_cross_asset_predictions.py",
+      "sha256": "496fb837135f157f56384553a47887c6d71355f7910d4930c2c26e9040fab580",
+      "bytes": 17416
+    },
+    {
+      "path": "run_rq4_experiment.py",
+      "sha256": "00e630e8a9fe47e0d0388c98e14c202ea0e6fe6946398a4bd0762852cfbca8b0",
+      "bytes": 48126
+    },
+    {
+      "path": "upstream/AAPL_rq3_model_predictions.csv",
+      "sha256": "f76d0cd522db3faabbc41fd4867df0378b0a14f2531502fc2c905243085b4585",
+      "bytes": 699356
+    },
+    {
+      "path": "upstream/NVDA_rq3_model_predictions.csv",
+      "sha256": "fb058ade00757dad2ec9024279c9fb6df492d7e20795754b0d7d4995246a919c",
+      "bytes": 699275
+    },
+    {
+      "path": "upstream/TSLA_rq3_all_predictions.csv",
+      "sha256": "b529b49a85164a8aa2a5c3c7bc7a04feb74a31cbe1437d2e7cfd0fb07a15d97f",
+      "bytes": 1396365
+    },
+    {
+      "path": "upstream/TSLA_rq3_fold_metrics.csv",
+      "sha256": "ddceefba80aa7579d02c1b4f8f1e9ba0c51818c1d55adea467215ceadd2b4fe7",
+      "bytes": 15159
+    },
+    {
+      "path": "upstream/TSLA_rq3_selected_configurations.csv",
+      "sha256": "1267d776c26e640fb53126738a3e7eb037a155a4aea2116f8f98eb396ad14f8c",
+      "bytes": 3384
+    },
+    {
+      "path": "upstream/cross_asset_prediction_manifest.json",
+      "sha256": "0077125fcd09418aabe8c5a2d8345ef808d973913739de8ce832c20951be1f1d",
+      "bytes": 1590
+    },
+    {
+      "path": "upstream/rq3_engine.py",
+      "sha256": "268df7f52848f7b1dda1722076a7ffbe8ba980dc66a86ea02d031d5ded34c677",
+      "bytes": 68415
+    },
+    {
+      "path": "upstream/rq3_protocol.json",
+      "sha256": "56e35bed3f4980b06c142e2d928a73ab54ea20f84cf30d27d64dce8b9cd873fa",
+      "bytes": 9525
+    },
+    {
+      "path": "upstream/rq4_model_predictions.csv",
+      "sha256": "e6aba4b3c54ccb4ee0b5f09d8987f49b197aa52dc9b4cd3f30fd81be8ed5ffbd",
+      "bytes": 2092329
+    },
+    {
+      "path": "validate_rq4.py",
+      "sha256": "5d4183211536de4e5fd2c2782a61ef88c6f69563c7af12a2487efa367775e5fd",
+      "bytes": 91041
+    }
+  ]
+}
