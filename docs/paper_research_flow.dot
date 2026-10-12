@@ -1,0 +1,22 @@
+digraph ResearchFlow {
+  graph [rankdir=TB, bgcolor="white", pad="0.18", nodesep="0.32", ranksep="0.40", fontname="Arial", fontsize=12, splines=polyline];
+  node [shape=box, style="rounded,filled", fillcolor="#F1F5F8", color="#617180", fontname="Arial", fontsize=12, margin="0.15,0.12"];
+  edge [fontname="Arial", fontsize=10, color="#4B5965", arrowsize=0.7];
+  rq2 [label="RQ2  Feature families\nRegularised LR comparison\nLocal TSLA and macro snapshots"];
+  rq3 [label="RQ3  Common information\nLR / RF / XGBoost / LSTM\nTSLA 20-session x 6-channel input"];
+  handoff [label="Versioned RQ4 handoff\nCopied engine and protocol\nTSLA predictions and fit records",fillcolor="#FFF3DC"];
+  cross [label="Independent AAPL and NVDA fits\nSame RQ3 temporal protocol\nAsset-specific data and preprocessing"];
+  combined [label="Combined prediction ledger\nThree assets x four models\nSource hashes and fit metadata",fillcolor="#E9F1FA"];
+  rq4 [label="RQ4  Five-sleeve evaluation\nNext-open execution and fixed costs\nMA and passive references"];
+  results [label="Saved research evidence\nPredictions / metrics / figures / ledgers\nStage validators and release checks",fillcolor="#E8F2EC"];
+  rq2 -> rq3 [label="frozen feature specification\nand RQ2 evidence copies",style=dashed,color="#986A16"];
+  rq3 -> handoff [label="reviewed copy after recomputation",style=dashed,color="#986A16"];
+  handoff -> cross [label="load copied engine / protocol"];
+  handoff -> combined [label="copied TSLA predictions"];
+  cross -> combined [label="write and combine predictions"];
+  combined -> rq4 [label="read fixed probabilities"];
+  rq4 -> results [label="write economic evidence"];
+  rq2 -> results [label="feature evidence",constraint=false,color="#84919C"];
+  rq3 -> results [label="classification evidence",constraint=false,color="#84919C"];
+  {rank=same; cross; combined;}
+}
