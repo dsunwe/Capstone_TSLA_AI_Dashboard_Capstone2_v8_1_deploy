@@ -1,5 +1,16 @@
 # Capstone II v8.1 Deploy · Examiner-Ready ML Dashboard
 
+## LSTM correction under review
+
+This branch corrects the formal RQ3 LSTM refit-epoch bookkeeping. The bundled
+RQ3/RQ4 results and all numerical claims below remain the original archived
+results; they have not been regenerated with the correction. This branch is
+not a new validated research release. See
+[the correction and rerun guide](docs/paper_epoch_correction.md) before using
+the LSTM comparisons in a manuscript. The original release manifests are
+intentionally retained, so source/release integrity checks must flag this
+work in progress until a complete corrected evidence set is produced.
+
 This GitHub-ready package contains a working Streamlit Dashboard for the
 complete RQ1–RQ4 study. It connects data preparation, feature-family
 evaluation, LR/RF/XGBoost/LSTM comparison, TSLA–AAPL–NVDA replication, and

@@ -1,0 +1,19 @@
+digraph DashboardBoundary {
+  graph [rankdir=TB, bgcolor="white", pad="0.20", nodesep="0.70", ranksep="0.42", fontname="Arial", splines=polyline];
+  node [shape=box, style="rounded,filled", fillcolor="#F1F5F8", color="#617180", fontname="Arial", fontsize=12, margin="0.18,0.13"];
+  edge [fontname="Arial", fontsize=10, color="#4B5965", arrowsize=0.7];
+  evidence [label="Saved RQ2 to RQ4 evidence\nVersioned results and metadata",fillcolor="#E8F2EC"];
+  reader [label="Formal evidence loaders\nsrc/v8_evidence.py"];
+  formal [label="Dashboard Pages 3 to 6\nRead-only tables and charts\nsrc/v8_sections.py",fillcolor="#E9F1FA"];
+  csv [label="Raw or uploaded CSV\nExploratory input"];
+  features [label="Data and feature preparation\nsrc/data.py / context.py / features.py"];
+  sandbox [label="Page 7 Sandbox\nTraining only after explicit user action\nExploratory outputs",fillcolor="#FFF3DC"];
+  evidence -> reader [label="read saved files"];
+  reader -> formal [label="render evidence"];
+  csv -> features [label="clean and transform"];
+  features -> sandbox [label="Run Sandbox Model"];
+  features -> formal [label="Page 3 input availability",color="#84919C",constraint=false];
+  {rank=same; evidence; csv;}
+  {rank=same; reader; features;}
+  {rank=same; formal; sandbox;}
+}

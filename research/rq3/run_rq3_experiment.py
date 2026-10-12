@@ -454,6 +454,7 @@ def fit_lstm_inner(
     model = build_lstm(config, seed)
     callback = tf.keras.callbacks.EarlyStopping(
         monitor="val_loss",
+        mode="min",
         patience=10,
         min_delta=1e-4,
         restore_best_weights=True,
@@ -471,10 +472,24 @@ def fit_lstm_inner(
         callbacks=[callback],
         class_weight=class_weights(y_train),
     )
+    epochs_run = int(len(history.history["loss"]))
+    monitored_epoch = getattr(callback, "best_epoch", None)
+    if (
+        callback.best_weights is None
+        or not isinstance(monitored_epoch, (int, np.integer))
+        or not callback.start_from_epoch <= monitored_epoch < epochs_run
+        or not np.isfinite(history.history["val_loss"][monitored_epoch])
+    ):
+        tf.keras.backend.clear_session()
+        raise RuntimeError(
+            "LSTM early stopping did not record a finite monitored best epoch; "
+            "refusing to choose a refit epoch from unmonitored validation loss."
+        )
+    # Keras records a zero-based epoch for the weights restored at fit end.
+    # A raw history argmin would include warm-up epochs and ignore min_delta.
+    best_epoch = int(monitored_epoch) + 1
     probability = model.predict(x_validation, verbose=0).reshape(-1)
     elapsed = time.perf_counter() - started
-    best_epoch = int(np.argmin(history.history["val_loss"]) + 1)
-    epochs_run = int(len(history.history["loss"]))
     tf.keras.backend.clear_session()
     return probability, best_epoch, epochs_run, elapsed
 
