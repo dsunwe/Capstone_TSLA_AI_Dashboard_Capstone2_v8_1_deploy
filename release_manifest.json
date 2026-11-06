@@ -4,9 +4,9 @@
     "name": "Examiner-Ready Literature and Lean Dashboard",
     "date": "2026-07-30",
     "status": "retrospective research package",
-    "generated_utc": "2026-07-30T10:42:26.822496+00:00",
+    "generated_utc": "2026-11-06T17:40:03.477173+00:00",
     "run_id": "v8.1-deploy-release",
-    "artifact_count": 255
+    "artifact_count": 262
   },
   "artifacts": [
     {
@@ -18,6 +18,36 @@
       "path": ".gitignore",
       "bytes": 111,
       "sha256": "79fee9aac1fa9d0b094f5717fa23808126a42c75f4e52e5792004e1232ff62b1"
+    },
+    {
+      "path": ".idea/.gitignore",
+      "bytes": 182,
+      "sha256": "e6ad1777e2ee0a3533216812ae3ea5ede367062cfedbf89b8ce09e466f3636ec"
+    },
+    {
+      "path": ".idea/Capstone_TSLA_AI_Dashboard_Capstone2_v8_1_deploy.iml",
+      "bytes": 622,
+      "sha256": "57f90379f306f4ab16f012ed208862efc843caaec3d74166a4544dc9a62bbe31"
+    },
+    {
+      "path": ".idea/inspectionProfiles/Project_Default.xml",
+      "bytes": 637,
+      "sha256": "0baa6508a8d4601ac6fc6aed65cb9d4ab4a3c9e001eec1b5cc31cf748af79b25"
+    },
+    {
+      "path": ".idea/inspectionProfiles/profiles_settings.xml",
+      "bytes": 174,
+      "sha256": "6172c5997eeb3cd19c9ca2b5b97d6e2983cdd1fa60b2460d7bbb74055edcaa46"
+    },
+    {
+      "path": ".idea/modules.xml",
+      "bytes": 348,
+      "sha256": "0ecf5bc079f02ee6eaeb834b4a81ac87ee242bdc1b3dffa182effd4e9b1c8a88"
+    },
+    {
+      "path": ".idea/vcs.xml",
+      "bytes": 180,
+      "sha256": "55768f1f84fb117f1d0fc383e180b5d0aa5e5e6584c8c4a2995c15b4237f0972"
     },
     {
       "path": ".streamlit/config.toml",
@@ -36,8 +66,8 @@
     },
     {
       "path": "app.py",
-      "bytes": 35866,
-      "sha256": "0666ee6a6ca76afa14fd8cbda50ffbf47f4a26f0356e81abb8cf66ccbc98b14d"
+      "bytes": 35694,
+      "sha256": "1b04fa55ab50603c893d2ecc1eef78b226f0a59fe2861ce4bd984e15563a5cc1"
     },
     {
       "path": "data/context/CPIAUCSL.csv",
@@ -1020,6 +1050,11 @@
       "sha256": "482d67fc20bfbf05451bc89df9ae8468457644280008926f7b4fea8849749635"
     },
     {
+      "path": "src/figure_display.py",
+      "bytes": 777,
+      "sha256": "74325b919c132524b7524c2db9fe77a5a03be8e9678a541a7d9a5c766e595250"
+    },
+    {
       "path": "src/finbert.py",
       "bytes": 13175,
       "sha256": "038ffd2b554d8cb92b9e7784a2e8237ab80d26552323764677f2218b20799ef6"
@@ -1116,8 +1151,8 @@
     },
     {
       "path": "src/v8_sections.py",
-      "bytes": 36778,
-      "sha256": "741294ba1aa06682dafd1bec1015d93b71a9cab4a30ae02603f428509a449ce4"
+      "bytes": 36699,
+      "sha256": "1fa2ee9516af22b81d77133221f49944d8b866d861637895526af2d571088bf3"
     },
     {
       "path": "src/validation.py",

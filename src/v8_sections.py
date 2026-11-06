@@ -10,10 +10,10 @@ from __future__ import annotations
 
 from typing import Any
 
-import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
+from src.figure_display import show_figure as _show_figure
 from src.literature import (
     citation_links,
     feature_rationale_table,
@@ -182,9 +182,6 @@ def _format_table(
     return display
 
 
-def _show_figure(figure: plt.Figure) -> None:
-    st.pyplot(figure, width="stretch")
-    plt.close(figure)
 
 
 def _period_label(period: str) -> str:
@@ -1075,5 +1072,6 @@ def render_rq4_backtesting() -> None:
             "Patton & Weller (2020)",
         ],
     )
+
 
 

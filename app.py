@@ -5,7 +5,6 @@ from pathlib import Path
 
 os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
 
-import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
@@ -23,6 +22,7 @@ from src.config import (
     PRESPECIFIED_OOF_FEATURES,
     TARGET_DIRECTION_COLUMN,
 )
+from src.figure_display import show_figure
 from src.context import ContextResult, build_context_frame
 from src.data import (
     date_summary,
@@ -255,12 +255,6 @@ def data_fingerprint(
 
 
 
-def show_figure(fig) -> None:
-    if fig is None:
-        st.info("No chart is available for the selected data.")
-        return
-    st.pyplot(fig, width="stretch")
-    plt.close(fig)
 
 
 def render_method_literature(
@@ -1077,3 +1071,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
