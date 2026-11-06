@@ -4,11 +4,16 @@
     "name": "Examiner-Ready Literature and Lean Dashboard",
     "date": "2026-07-30",
     "status": "retrospective research package",
-    "generated_utc": "2026-11-06T17:40:03.477173+00:00",
+    "generated_utc": "2026-11-06T17:42:39.243005+00:00",
     "run_id": "v8.1-deploy-release",
-    "artifact_count": 262
+    "artifact_count": 263
   },
   "artifacts": [
+    {
+      "path": ".devcontainer/devcontainer.json",
+      "bytes": 1014,
+      "sha256": "c4e050630976d023f100cf41da7cf96219ea35ea33920f076a69572f77e6cb02"
+    },
     {
       "path": ".github/workflows/deploy-smoke.yml",
       "bytes": 1815,
